@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Learning Hub</title>
+</head>
+<body>
+
+    <header>
+        <h1>HTML Learning Hub</h1>
+        <p>Learn HTML through interactive activities and multimedia.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Student Registration</h2>
+
+            <form action="#" method="get">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <br><br>
+
+                <label for="course">Choose a Course:</label>
+                <select id="course" name="course">
+                    <option value="html">HTML Basics</option>
+                    <option value="css">CSS Fundamentals</option>
+                    <option value="js">JavaScript Basics</option>
+                </select>
+                <br><br>
+
+                <p>Preferred Learning Format:</p>
+
+                <input type="radio" id="video" name="format" value="video">
+                <label for="video">Video</label>
+
+                <input type="radio" id="reading" name="format" value="reading">
+                <label for="reading">Reading</label>
+                <br><br>
+
+                <!-- Embedded Video Container (Hidden by default) -->
+                <div id="videoContainer" style="display: none; margin-bottom: 20px;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qz0aGYrrlhU?si=uGNQQIlxAPOFWIkE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                <label for="feedback">Your Feedback:</label>
+                <br>
+                <textarea id="feedback" name="feedback" rows="4" cols="35"></textarea>
+                <br><br>
+
+                <button type="submit">Register</button>
+                <button type="reset">Clear Form</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const videoRadio = document.getElementById('video');
+        const readingRadio = document.getElementById('reading');
+        const videoContainer = document.getElementById('videoContainer');
+        const form = document.querySelector('form');
+
+        function toggleVideo() {
+            if (videoRadio.checked) {
+                videoContainer.style.display = 'block';
+            } else {
+                videoContainer.style.display = 'none';
+            }
+        }
+
+        videoRadio.addEventListener('change', toggleVideo);
+        readingRadio.addEventListener('change', toggleVideo);
+
+        form.addEventListener('reset', () => {
+            videoContainer.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
