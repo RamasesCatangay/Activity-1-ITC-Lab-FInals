@@ -4,6 +4,177 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f3f6fb;
+            --card: #ffffff;
+            --ink: #1b2437;
+            --muted: #5b6678;
+            --accent: #2f6fed;
+            --accent-dark: #2457bf;
+            --line: #d9e0ec;
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--accent);
+            color: #fff;
+            text-align: center;
+            padding: 48px 20px 56px;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: clamp(1.9rem, 5vw, 2.6rem);
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 640px;
+            margin: -28px auto 40px;
+            padding: 0 16px;
+        }
+
+        section {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: 0 6px 24px rgba(27, 36, 55, 0.08);
+        }
+
+        h2 { margin: 0 0 20px; font-size: 1.5rem; }
+
+        .field { margin-bottom: 18px; }
+
+        label { font-weight: 500; }
+
+        .field > label { display: block; margin-bottom: 6px; }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            font: inherit;
+            color: var(--ink);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        textarea { resize: vertical; }
+
+        input:focus-visible,
+        select:focus-visible,
+        textarea:focus-visible,
+        button:focus-visible {
+            outline: 3px solid rgba(47, 111, 237, 0.35);
+            outline-offset: 1px;
+            border-color: var(--accent);
+        }
+
+        fieldset {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            margin: 0 0 18px;
+            padding: 12px 16px 14px;
+        }
+
+        legend { font-weight: 500; padding: 0 6px; }
+
+        .radio-row { display: flex; gap: 24px; }
+
+        .radio-row label { font-weight: 400; cursor: pointer; }
+
+        input[type="radio"] { accent-color: var(--accent); margin-right: 6px; }
+
+        /* Video + reading panels */
+        .panel {
+            display: none;
+            margin-bottom: 18px;
+        }
+
+        .panel.show { display: block; }
+
+        .video-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-wrap iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .reading {
+            background: var(--bg);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 16px 20px;
+        }
+
+        .reading h3 { margin: 0 0 8px; font-size: 1.1rem; }
+        .reading p { margin: 0 0 10px; color: var(--muted); }
+        .read-link {
+            display: inline-block;
+            padding: 9px 18px;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .read-link:hover { background: var(--accent-dark); }
+
+        .read-link:focus-visible {
+            outline: 3px solid rgba(47, 111, 237, 0.35);
+            outline-offset: 2px;
+        }
+
+        .actions { display: flex; gap: 12px; margin-top: 8px; }
+
+        button {
+            font: inherit;
+            font-weight: 500;
+            padding: 11px 22px;
+            border-radius: 8px;
+            border: 1px solid var(--accent);
+            cursor: pointer;
+        }
+
+        button[type="submit"] { background: var(--accent); color: #fff; }
+        button[type="submit"]:hover { background: var(--accent-dark); }
+        button[type="reset"] { background: #fff; color: var(--accent); }
+        button[type="reset"]:hover { background: var(--bg); }
+    </style>
 </head>
 <body>
 
@@ -17,43 +188,62 @@
             <h2>Student Registration</h2>
 
             <form action="#" method="get">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" required>
-                <br><br>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <br><br>
-
-                <label for="course">Choose a Course:</label>
-                <select id="course" name="course">
-                    <option value="html">HTML Basics</option>
-                    <option value="css">CSS Fundamentals</option>
-                    <option value="js">JavaScript Basics</option>
-                </select>
-                <br><br>
-
-                <p>Preferred Learning Format:</p>
-
-                <input type="radio" id="video" name="format" value="video">
-                <label for="video">Video</label>
-
-                <input type="radio" id="reading" name="format" value="reading">
-                <label for="reading">Reading</label>
-                <br><br>
-
-                <!-- Embedded Video Container (Hidden by default) -->
-                <div id="videoContainer" style="display: none; margin-bottom: 20px;">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/qz0aGYrrlhU?si=uGNQQIlxAPOFWIkE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <div class="field">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
 
-                <label for="feedback">Your Feedback:</label>
-                <br>
-                <textarea id="feedback" name="feedback" rows="4" cols="35"></textarea>
-                <br><br>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-                <button type="submit">Register</button>
-                <button type="reset">Clear Form</button>
+                <div class="field">
+                    <label for="course">Choose a Course</label>
+                    <select id="course" name="course">
+                        <option value="html">HTML Basics</option>
+                        <option value="css">CSS Fundamentals</option>
+                        <option value="js">JavaScript Basics</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>Preferred Learning Format</legend>
+                    <div class="radio-row">
+                        <label for="video">
+                            <input type="radio" id="video" name="format" value="video">Video
+                        </label>
+                        <label for="reading">
+                            <input type="radio" id="reading" name="format" value="reading">Reading
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- Embedded Video Container (hidden by default) -->
+                <div id="videoContainer" class="panel">
+                    <div class="video-wrap">
+                        <iframe src="https://www.youtube.com/embed/qz0aGYrrlhU?si=uGNQQIlxAPOFWIkE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Reading Container (hidden by default) -->
+                <div id="readingContainer" class="panel">
+                    <div class="reading">
+                        <h3>HTML Tutorial (PDF)</h3>
+                        <p>A beginner-friendly guide that covers tags, elements, attributes, formatting, tables, lists, links, images, and forms.</p>
+                        <a class="read-link" href="https://www.tutorialspoint.com/html/html_tutorial.pdf" target="_blank" rel="noopener noreferrer">Open the tutorial</a>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="feedback">Your Feedback</label>
+                    <textarea id="feedback" name="feedback" rows="4"></textarea>
+                </div>
+
+                <div class="actions">
+                    <button type="submit">Register</button>
+                    <button type="reset">Clear Form</button>
+                </div>
             </form>
         </section>
     </main>
@@ -62,23 +252,25 @@
         const videoRadio = document.getElementById('video');
         const readingRadio = document.getElementById('reading');
         const videoContainer = document.getElementById('videoContainer');
+        const readingContainer = document.getElementById('readingContainer');
         const form = document.querySelector('form');
 
-        function toggleVideo() {
-            if (videoRadio.checked) {
-                videoContainer.style.display = 'block';
-            } else {
-                videoContainer.style.display = 'none';
-            }
+        function toggleContent() {
+            videoContainer.classList.toggle('show', videoRadio.checked);
+            readingContainer.classList.toggle('show', readingRadio.checked);
         }
 
-        videoRadio.addEventListener('change', toggleVideo);
-        readingRadio.addEventListener('change', toggleVideo);
+        videoRadio.addEventListener('change', toggleContent);
+        readingRadio.addEventListener('change', toggleContent);
 
         form.addEventListener('reset', () => {
-            videoContainer.style.display = 'none';
+            videoContainer.classList.remove('show');
+            readingContainer.classList.remove('show');
         });
     </script>
+
+</body>
+</html>
 
 </body>
 </html>
